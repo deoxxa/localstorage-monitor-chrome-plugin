@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Local Storage Monitor",
+  "version": "0.0.0",
+  "description": "Keep track of reads from local storage, to find possible debug or A/B features.",
+  "offline_enabled": true,
+  "background": {
+    "persistent": false,
+    "scripts": ["script_background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["script_content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": ["script_inject.js"],
+  "page_action": {
+    "default_title": "Local Storage Monitor",
+    "default_popup": "popup.html"
+  }
+}
